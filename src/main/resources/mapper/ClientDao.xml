@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.saneza.api.dao.ClientDao" >
+
+    <sql id="pagination">
+        <if test="offset!=null">
+            LIMIT #{offset}
+            <if test="count!=null">
+                ,#{count}
+            </if>
+        </if>
+    </sql>
+
+    <sql id="client_filter">
+        <if test="clientId!=null">
+            AND CLIENT_ID=#{clientId}
+        </if>
+        <if test="phoneNumber!=null">
+            AND PHONE_NUMBER=#{phoneNumber}
+        </if>
+        <if test="locationId!=null">
+            AND LOCATION_ID=#{locationId}
+        </if>
+        <if test="username!=null">
+            AND USERNAME=#{username}
+        </if>
+        <if test="password!=null">
+            AND PASSWORD=#{password}
+        </if>
+        <if test="email!=null">
+            AND email=#{email}
+        </if>
+        <if test="startTime!=null">
+            AND CREATE_TIME &gt;=#{startTime}
+        </if>
+        <if test="endTime!=null">
+            AND CREATE_TIME &lt;=#{startTime}
+        </if>
+        <if test="searchTerm!=null">
+            <bind name="pattern" value="'%'+searchTerm+'%'"/>
+            AND (
+            STREET_NAME LIKE #{pattern}
+            OR
+            FIRST_NAME LIKE #{pattern}
+            OR
+            LAST_NAME LIKE #{pattern}
+            )
+        </if>
+    </sql>
+
+    <select id="getAll" parameterType="map" resultType="com.saneza.api.model.Client">
+        SELECT  * FROM  CLIENTS WHERE 1=1
+        <include refid="client_filter"/>
+        ORDER BY CREATE_TIME DESC
+        <include refid="pagination"/>
+    </select>
+    <select id="getSingleClient" parameterType="map" resultType="com.saneza.api.model.Client">
+        SELECT  * FROM  CLIENTS WHERE 1=1
+        <include refid="client_filter"/>
+    </select>
+    <insert id="createClient" parameterType="map">
+        INSERT  INTO CLIENTS
+        (LOCATION_ID,STREET_NAME,PHONE_NUMBER,USERNAME,FIRST_NAME,LAST_NAME,BIRTHDAY,SEX,PASSWORD,EMAIL,
+        PROFILE_IMAGE,CREDIT,CREATE_TIME,UPDATE_TIME)
+        VALUES (#{locationId},#{streetName},#{phoneNumber},#{username},#{firstName},#{lastName},#{birthday}
+        ,#{sex},#{password},#{email},#{profileImage},#{credit},#{createTime},#{updateTime})
+    </insert>
+    <update id="updateClient" parameterType="map">
+
+    </update>
+    <select id="count" resultType="int">
+        SELECT COUNT(*) FROM CLIENTS WHERE 1=1
+        <include refid="client_filter"/>
+    </select>
+</mapper>
