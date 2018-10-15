@@ -9,6 +9,7 @@ package com.saneza.api.dao;
 
 import com.saneza.api.model.Test;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 

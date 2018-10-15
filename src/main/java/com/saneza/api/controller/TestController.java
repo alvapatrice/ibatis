@@ -29,6 +29,7 @@ public class TestController {
     public String testJson(){
         Map<String,Object> resultMap= new HashMap<String,Object>();
         resultMap.put("data","Hi");
+
         return ReturnUtil.resultSuccess(resultMap);
     }
 

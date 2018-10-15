@@ -21,6 +21,9 @@ public class Shop {
     //shop description
     private String description;
 
+    //1-for salon, 2-for carwash
+    private String shopType;
+
     //shop status  1-available, 0-blocked, -99 deleted
     private Integer status;
 
@@ -61,6 +64,14 @@ public class Shop {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getShopType() {
+        return shopType;
+    }
+
+    public void setShopType(String shopType) {
+        this.shopType = shopType;
     }
 
     public Integer getStatus() {

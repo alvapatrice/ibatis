@@ -18,6 +18,9 @@ public class ShopBranch {
     //location id(Containing province, district, sector, cell)
     private Integer locationId;
 
+    //shop street name
+    private String streetName;
+
     //branch name
     private String branchName;
 
@@ -67,6 +70,14 @@ public class ShopBranch {
 
     public void setLocationId(Integer locationId) {
         this.locationId = locationId;
+    }
+
+    public String getStreetName() {
+        return streetName;
+    }
+
+    public void setStreetName(String streetName) {
+        this.streetName = streetName;
     }
 
     public String getBranchName() {
