@@ -1,5 +1,8 @@
 package com.saneza.api.model.FormFilters;
-
+/**
+ * Created by gatete rugamba
+ * on 10/17/2018
+ */
 public class LocationFilter extends SearchForm
 {
     private Integer locationId;

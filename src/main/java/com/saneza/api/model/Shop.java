@@ -5,7 +5,7 @@ import java.util.Date;
 /**
  * Created by Nostalgie Patrice
  * on 10/14/2018
- * Make it work, make it right, make it fast.
+ *
  */
 public class Shop {
 

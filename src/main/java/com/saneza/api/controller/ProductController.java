@@ -4,7 +4,11 @@ import com.saneza.api.common.utils.ReturnUtil;
 import com.saneza.api.model.Client;
 import com.saneza.api.model.FormFilters.ClientFilter;
 import com.saneza.api.model.FormFilters.ClientForm;
+import com.saneza.api.model.FormFilters.ProductFilter;
+import com.saneza.api.model.FormFilters.ProductForm;
+import com.saneza.api.model.Product;
 import com.saneza.api.service.ClientService;
+import com.saneza.api.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,44 +19,48 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by Nostalgie Patrice
+ * Created by gatete
  * on 10/14/2018
  * Make it work, make it right, make it fast.
  */
 
 
 @RestController
-@RequestMapping("/clients")
-public class ClientController {
+@RequestMapping("/products")
+public class ProductController {
 
     @Autowired
-    ClientService clientService;
+    private ProductService ps;
 
-    //create new client(registration, create by salon)
-    @PostMapping("/create.do")
-    public String createClient(ClientForm clientForm){
-        //TODO validate the form before calling for operation
-
-        return clientService.createNewClient(clientForm);
-    }
-
-    //query the list of clients(it supports pagination by default)
+    //for get the list of all products
     @PostMapping("/getList.do")
-    public String getClientList(ClientFilter clientFilter){
-        Map<String,Object> resultMap= new HashMap<>();
-        List<Client> clients=clientService.getClientsList(clientFilter);
-        resultMap.put("data",clients);
-        resultMap.put("totalCount",clientService.countAll(clientFilter));
-        resultMap.put("page",clientFilter.getPage());
+    public String getProductList(ProductFilter pf) {
 
-        return ReturnUtil.resultSuccess(resultMap);
+        Map<String, Object> resultmap = new HashMap<>();
+        List<Product> products = ps.getProducts(pf);
+        resultmap.put("data", products);
+        resultmap.put("totalaccount", ps.countAll(pf));
+        resultmap.put("page", pf.getPage());
+
+        return ReturnUtil.resultSuccess(resultmap);
     }
-    //query client information
-    @PostMapping("/getInfo.do")
-    public String getClientInfo(ClientFilter clientFilter){
-        Map<String,Object> resultMap= new HashMap<>();
-        Client client=clientService.getSingleClient(clientFilter);
-        resultMap.put("data",client);
-        return ReturnUtil.resultSuccess(resultMap);
+
+
+    //for get product information
+    @PostMapping("/getinfo")
+    public String getProduct(ProductFilter pf) {
+        Map<String, Object> resultmap = new HashMap<>();
+        Product product = ps.getProduct(pf);
+        resultmap.put("data", product);
+        return ReturnUtil.resultSuccess(resultmap);
     }
+
+    @PostMapping("/insert")
+    public String createProduct(ProductForm pf){
+        ps.createProduct(pf);
+        return "suscefull";
+    }
+
+
+
 }
