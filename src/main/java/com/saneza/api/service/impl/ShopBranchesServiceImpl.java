@@ -2,6 +2,7 @@ package com.saneza.api.service.impl;
 
 import com.saneza.api.dao.ShopBranchDao;
 import com.saneza.api.model.FormFilters.ShopBranchFilter;
+import com.saneza.api.model.FormFilters.ShopBranchForm;
 import com.saneza.api.model.ShopBranch;
 import com.saneza.api.service.ShopBranchService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,5 +32,16 @@ public class ShopBranchesServiceImpl implements ShopBranchService {
     @Override
     public int count(ShopBranchFilter shopBranchFilter) {
         return shopBranchDao.countAll(shopBranchFilter);
+    }
+
+    @Override
+    public void createShopBranch(ShopBranchForm shopBranchForm) {
+        shopBranchDao.createShopBranch(shopBranchForm);
+    }
+
+    @Override
+    public void deleteShopBranch(ShopBranchFilter shopBranchFilter) {
+
+        shopBranchDao.deleteShopBranch(shopBranchFilter);
     }
 }

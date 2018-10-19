@@ -23,4 +23,6 @@ public interface ServiceDao
     public int countAll(ServiceFilter serviceFilter);
 //for creating services
     public void createService(ServiceForm serviceForm);
+//for deleting a service
+    public void deleteService(ServiceFilter serviceFilter);
 }

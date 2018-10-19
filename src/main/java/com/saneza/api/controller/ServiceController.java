@@ -2,6 +2,7 @@ package com.saneza.api.controller;
 
 import com.saneza.api.common.utils.ReturnUtil;
 import com.saneza.api.model.FormFilters.ServiceFilter;
+import com.saneza.api.model.FormFilters.ServiceForm;
 import com.saneza.api.model.Service;
 import com.saneza.api.service.ServiceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,5 +36,16 @@ public class ServiceController
         Service service=serviceService.getService(serviceFilter);
         resultMap.put("data",service);
         return ReturnUtil.resultSuccess(resultMap);
+    }
+
+    @PostMapping("/create.sv")
+    public String createService(ServiceForm serviceForm){
+        serviceService.createService(serviceForm);
+        return "succefull";
+    }
+    @PostMapping("/delete.sv")
+    public String deleteService(ServiceFilter serviceFilter){
+        serviceService.deleteService(serviceFilter);
+        return "done";
     }
 }

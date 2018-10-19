@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.saneza.api.dao.ShopServicesDao" >
+
+     <sql id="pagination">
+        <if test="offset!=null">
+            LIMIT #{offset}
+            <if test="count!=null">
+                ,#{count}
+            </if>
+        </if>
+    </sql>
+
+    <sql id="filter">
+        <if test="id!=null">
+            AND Id=#{id}
+        </if>
+        <if test="shopId!=null">
+            AND shop_Id=#{shopId}
+        </if>
+
+        <if test="serviceId!=null">
+            AND service_Id=#{serviceId}
+        </if>
+    </sql>
+
+    <select id="getShopServicess" parameterType="map" resultType="com.saneza.api.model.ShopServices">
+        SELECT * FROM shop_services WHERE 1=1
+        <include refid="filter"/>
+    </select>
+    <select id="getBranchService" parameterType="map" resultType="com.saneza.api.model.ShopServices">
+        SELECT * FROM shop_services WHERE 1=1
+        <include refid="filter"/>
+    </select>
+    <select id="countAll" resultType="int" parameterType="map">
+        SELECT COUNT(*) FROM shop_services WHERE 1=1
+        <include refid="filter"/>
+    </select>
+    <insert id="insertBS" parameterType="map">
+
+       INSERT INTO shop_services(id,shop_id,service_id,time)
+        VALUES
+       (#{id},#{shopId},#{serviceId},#{time})
+
+    </insert>
+
+</mapper>

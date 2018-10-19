@@ -41,5 +41,17 @@
         <include refid="service_filter"/>
     </select>
 
+    <insert id="createService" parameterType="map">
+        INSERT INTO services
+     (service_id,shop_id,category_id,service_name,duration,price,status)
+     VALUES(#{serviceId},#{shopId},#{categoryId},#{serviceName},#{duration},#{price},#{status})
+    </insert>
+    
+    <delete id="deleteService" parameterType="map">
+        DELETE FROM services WHERE 1=1
+        <include refid="service_filter"/>
+    </delete>
+ 
+
 
 </mapper>

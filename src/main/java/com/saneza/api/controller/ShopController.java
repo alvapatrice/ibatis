@@ -14,6 +14,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ *created by gatete rugamba
+ * on 10/19/2018
+ */
 @RestController
 @RequestMapping("/shop")
 public class ShopController

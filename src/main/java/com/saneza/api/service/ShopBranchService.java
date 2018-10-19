@@ -2,6 +2,7 @@ package com.saneza.api.service;
 
 import com.saneza.api.dao.ShopBranchDao;
 import com.saneza.api.model.FormFilters.ShopBranchFilter;
+import com.saneza.api.model.FormFilters.ShopBranchForm;
 import com.saneza.api.model.ShopBranch;
 
 import java.util.List;
@@ -14,5 +15,9 @@ public interface ShopBranchService
     public ShopBranch getBranch(ShopBranchFilter shopBranchFilter);
     //count all
     public int count(ShopBranchFilter shopBranchFilter);
+    //for creating shop branch
+    public void createShopBranch(ShopBranchForm shopBranchForm);
+        //for deleting branches
+    public void deleteShopBranch(ShopBranchFilter shopBranchFilter);
 
 }

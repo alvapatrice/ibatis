@@ -61,7 +61,6 @@
         (product_id,shop_id,product_name,category,brand,image,price,special_price,stock,status)
         VALUES
         (#{productId},#{shopId},#{productName},#{category},#{brand},#{image},#{price},#{specialPrice},#{stock},#{status})
-
     </insert>
 
 

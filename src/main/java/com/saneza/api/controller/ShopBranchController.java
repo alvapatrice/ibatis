@@ -2,6 +2,7 @@ package com.saneza.api.controller;
 
 import com.saneza.api.common.utils.ReturnUtil;
 import com.saneza.api.model.FormFilters.ShopBranchFilter;
+import com.saneza.api.model.FormFilters.ShopBranchForm;
 import com.saneza.api.model.ShopBranch;
 import com.saneza.api.service.ShopBranchService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ *created by gatete rugamba
+ * on 10/19/2018
+ */
 @RestController
 @RequestMapping("/branche")
 public class ShopBranchController
@@ -31,10 +36,24 @@ public class ShopBranchController
 
     return ReturnUtil.resultSuccess(resultMap);
     }
+    @PostMapping("/get.bs")
     public String getBranch(ShopBranchFilter shopBranchFilter){
         Map<String,Object> resultMap=new HashMap<>();
         ShopBranch shopBranch=shopBranchService.getBranch(shopBranchFilter);
         resultMap.put("this",shopBranch);
         return ReturnUtil.resultSuccess(resultMap);
     }
+    @PostMapping("/create.bs")
+    public String createShopBranch(ShopBranchForm shopBranchForm){
+        shopBranchService.createShopBranch(shopBranchForm);
+        return "done";
+    }
+    @PostMapping("/delete.bs")
+    public String delete(ShopBranchFilter shopBranchFilter)
+    {
+        shopBranchService.deleteShopBranch(shopBranchFilter);
+
+        return "done";
+    }
+
 }

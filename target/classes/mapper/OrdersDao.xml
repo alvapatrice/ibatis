@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.saneza.api.dao.OrdersDao" >
+    <sql id="pagination">
+        <if test="offset!=null">
+            LIMIT #{offset}
+            <if test="count!=null">
+                ,#{count}
+            </if>
+        </if>
+    </sql>
+    <sql id="orders_filter">
+        <if test="orderId!=null">
+            AND order_Id=#{orderId}
+        </if>
+        <if test="clientId!=null">
+            AND client_Id=#{clientId}
+        </if>
+        <if test="productId!=null">
+            AND product_Id=#{productId}
+        </if>
+        <if test="branchId!=null">
+            AND branch_Id=#{branchId}
+        </if>
+    </sql>
+
+    <select id="getOrders" parameterType="map" resultType="com.saneza.api.model.Orders">
+        SELECT * FROM oders WHERE 1=1
+        <include refid="orders_filter"/>
+    </select>
+    <select id="getOrder" parameterType="map" resultType="com.saneza.api.model.Orders">
+        SELECT * FROM oders WHERE 1=1
+        <include refid="orders_filter"/>
+    </select>
+
+    <select id="countAll" parameterType="map" resultType="int">
+            SELECT COUNT(*) FROM oders WHERE 1=1
+            <include refid="orders_filter"/>
+    </select>
+
+
+    <insert id="insertOrders" parameterType="map">
+       INSERT INTO oders(id,client_id,product_id,branch_id,DATE,TiME)
+         VALUES
+        (#{orderId},#{clientId},productId,branchId,#{date},#{time})
+    </insert>
+
+</mapper>

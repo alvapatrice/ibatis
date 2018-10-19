@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.saneza.api.dao.ShopHolderDao" >
+
+     <sql id="pagination">
+        <if test="offset!=null">
+            LIMIT #{offset}
+            <if test="count!=null">
+                ,#{count}
+            </if>
+        </if>
+    </sql>
+
+    <sql id="filter">
+        <if test="holderId!=null">
+            AND holder_Id=#{holderId}
+        </if>
+        <if test="locationId!=null">
+            AND location_Id=#{locationId}
+        </if>
+        <if test="streetName!=null">
+            AND street_Name=#{streetName}
+        </if>
+        <if test="phoneNumber!=null">
+            AND phone_Number=#{phoneNumber}
+        </if>
+        <if test="userName!=null">
+            AND user_Name=#{userName}
+        </if>
+        <if test="firstName!=null">
+            AND first_Name=#{firstName}
+        </if>
+        <if test="lastName!=null">
+            AND last_Name=#{lastName}
+        </if>
+        <if test="email!=null">
+            AND email=#{email}
+        </if>
+    </sql>
+
+    <select id="getShopHolders" parameterType="map" resultType="com.saneza.api.model.ShopHolder">
+        SELECT * FROM Shop_Holders WHERE 1=1
+        <include refid="filter"/>
+    </select>
+    <select id="getShopHolder" parameterType="map" resultType="com.saneza.api.model.ShopHolder">
+        SELECT * FROM Shop_Holders WHERE 1=1
+        <include refid="filter"/>
+    </select>
+    <select id="countAll" resultType="int" parameterType="map">
+        SELECT COUNT(*) FROM Shop_Holders WHERE 1=1
+        <include refid="filter"/>
+    </select>
+    <insert id="insertShopHolder" parameterType="map">
+
+        INSERT INTO shop_holders(holder_id,location_id,street_name,phone_number,username,
+         first_name,last_name,
+         birthday,sex,password,email,profile_image,credit,create_time,update_time)
+        VALUES
+        (#{holderId},#{locationId},#{streetName},#{phoneNumber},#{userName},
+        #{firstName},#{lastName},
+        #{birthDay},#{sex},#{password},#{email},#{profileImage},#{credit},#{createTime},#{updateTime})
+
+    </insert>
+
+</mapper>

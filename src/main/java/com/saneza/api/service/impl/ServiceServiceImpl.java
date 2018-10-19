@@ -2,6 +2,7 @@ package com.saneza.api.service.impl;
 
 import com.saneza.api.dao.ServiceDao;
 import com.saneza.api.model.FormFilters.ServiceFilter;
+import com.saneza.api.model.FormFilters.ServiceForm;
 import com.saneza.api.service.ServiceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,5 +31,15 @@ public class ServiceServiceImpl implements ServiceService{
     @Override
     public int countAll(ServiceFilter serviceFilter) {
         return serviceDao.countAll(serviceFilter);
+    }
+
+    @Override
+    public void createService(ServiceForm serviceForm) {
+        serviceDao.createService(serviceForm);
+    }
+
+    @Override
+    public void deleteService(ServiceFilter serviceFilter) {
+        serviceDao.deleteService(serviceFilter);
     }
 }
