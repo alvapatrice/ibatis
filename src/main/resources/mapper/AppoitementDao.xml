@@ -45,4 +45,12 @@
         VALUES
         (#{appoitementId},#{clientId},#{serviceId},#{timeCreated},#{time},#{branchId},#{status})
     </insert>
+
+    <update id="updateService" parameterType="map">
+        update appointments set service_id=#{serviceId} where client_id=#{clientId} and id=#{appoitementId}
+    </update>
+    <update id="updateStatus" parameterType="map">
+       update appointments set status=#{status} where client_id=#{clientId} and id=#{appoitementId};
+   </update>
+
 </mapper>

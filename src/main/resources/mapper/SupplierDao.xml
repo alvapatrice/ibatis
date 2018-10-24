@@ -12,8 +12,8 @@
     </sql>
 
     <sql id="filter">
-        <if test="SupplierId!=null">
-            AND Supplier_Id=#{SupplierId}
+        <if test="supplierId!=null">
+            AND Supplier_Id=#{supplierId}
         </if>
         <if test="locationId!=null">
             AND location_Id=#{locationId}
@@ -55,8 +55,9 @@
         INSERT INTO Supplier(Supplier_id,location_id,street_name,phone_number,username,first_name,last_name,
          birthday,sex,password,email,profile_image,credit,create_time,update_time)
         VALUES
-        (#{SupplierId},#{locationId},#{streetName},#{phoneNumber},#{userName},#{firstName},
-        #{lastName},#{birthDay},#{sex},#{password},#{email},#{profileImage},#{credit},#{createTime},#{updateTime})
+        (#{supplierId},#{locationId},#{streetName},#{phoneNumber},#{userName},#{firstName},
+        #{lastName},#{birthDay},#{sex},#{password},#{email},#{profileImage},#{credit},#{createTime},
+        #{updateTime})
     </insert>
 
 </mapper>

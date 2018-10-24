@@ -43,7 +43,17 @@ public class OrdersController {
     }
     @PostMapping("/insert.od")
     public String insertOrder(OrdersForm ordersForm){
-        ordersService.insertOrder(ordersForm);
-        return "done";
+
+        return ordersService.insertOrder(ordersForm);
+    }
+
+    /**
+     * for managers only
+     * @param ordersForm
+     * @return
+     */
+    @PostMapping("/accept.od")
+    public String acceptOrder(OrdersForm ordersForm){
+        return ordersService.updateDelivelerdTime(ordersForm);
     }
 }

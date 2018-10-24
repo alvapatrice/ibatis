@@ -1,6 +1,7 @@
 package com.saneza.api.controller;
 
 import com.saneza.api.common.utils.ReturnUtil;
+import com.saneza.api.helper.ProductHelper;
 import com.saneza.api.model.Client;
 import com.saneza.api.model.FormFilters.ClientFilter;
 import com.saneza.api.model.FormFilters.ClientForm;
@@ -35,8 +36,8 @@ public class ProductController {
     //for get the list of all products
     @PostMapping("/getList.do")
     public String getProductList(ProductFilter pf) {
-
         Map<String, Object> resultmap = new HashMap<>();
+
         List<Product> products = ps.getProducts(pf);
         resultmap.put("data", products);
         resultmap.put("totalaccount", ps.countAll(pf));
@@ -59,6 +60,14 @@ public class ProductController {
     public String createProduct(ProductForm pf){
         ps.createProduct(pf);
         return "suscefull";
+    }
+
+    @PostMapping("/branch.pd")
+    public String getBranchProducts(ProductFilter productFilter){
+        Map<String, Object> resultmap = new HashMap<>();
+        List<ProductHelper> products = ps.getDetaills(productFilter);
+        resultmap.put("data", products);
+        return ReturnUtil.resultSuccess(resultmap);
     }
 
 

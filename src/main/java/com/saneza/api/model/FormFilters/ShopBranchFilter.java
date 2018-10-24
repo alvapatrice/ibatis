@@ -12,19 +12,24 @@ public class ShopBranchFilter extends SearchForm
 
     //location id(Containing province, district, sector, cell)
     private Integer locationId;
-
     //shop street name
     private String streetName;
+//the location name
+    private String locationName;
 
-    //branch name
-    private String branchName;
+    public String getLocationName() {
+        return locationName;
+    }
+
+    public void setLocationName(String locationName) {
+        this.locationName = locationName;
+    }
 
     //location latitude
     private Double latitude;
 
     //location longitude
     private Double longitude;
-
     public Integer getBranchId() {
         return branchId;
     }
@@ -57,13 +62,7 @@ public class ShopBranchFilter extends SearchForm
         this.streetName = streetName;
     }
 
-    public String getBranchName() {
-        return branchName;
-    }
 
-    public void setBranchName(String branchName) {
-        this.branchName = branchName;
-    }
 
     public Double getLatitude() {
         return latitude;

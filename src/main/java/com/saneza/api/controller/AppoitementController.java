@@ -45,7 +45,20 @@ public class AppoitementController
 
     @PostMapping("insert.app")
     public String insertAppoitement(AppoitementForm appoitementForm){
-        appoitementService.insertAppoitement(appoitementForm);
-        return "done";
+        return appoitementService.insertAppoitement(appoitementForm);
+    }
+
+    /**
+     * for updating  the serive in the appoitemnt
+     * @param appoitementForm
+     * @return
+     */
+    @PostMapping("service.app")
+    public String updateService(AppoitementForm appoitementForm){
+        return appoitementService.updateService(appoitementForm);
+    }
+    @PostMapping("status.app")
+    public String updateStatus(AppoitementForm appoitementForm){
+        return appoitementService.updateStatus(appoitementForm);
     }
 }

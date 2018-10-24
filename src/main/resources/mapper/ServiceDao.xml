@@ -52,6 +52,12 @@
         <include refid="service_filter"/>
     </delete>
  
-
+<select id="getIt" parameterType="java.lang.Integer" resultType="com.saneza.api.helper.ServiceHelper">
+       select service_name,duration,price,category.name from
+    services,branch_service,shop_branches,category where
+    shop_branches.branch_id=branch_service.branch_id and
+    branch_service.service_id=services.service_id
+    and services.category_id=category.id and shop_branches.branch_id=#{branchId}
+</select>
 
 </mapper>

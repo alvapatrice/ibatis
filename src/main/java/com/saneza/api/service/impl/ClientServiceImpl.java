@@ -6,6 +6,7 @@ import com.saneza.api.model.Client;
 import com.saneza.api.model.FormFilters.ClientFilter;
 import com.saneza.api.model.FormFilters.ClientForm;
 import com.saneza.api.service.ClientService;
+import com.sun.media.jfxmedia.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +29,9 @@ public class ClientServiceImpl implements ClientService {
         clientFilter.setPaginationDates();
         clientFilter.setPaginationOffset();
 
+        //System.out.println("the date is"+clientFilter.getStartTime().toString());
+
+
         return clientDao.getAll(clientFilter);
     }
 
@@ -40,9 +44,7 @@ public class ClientServiceImpl implements ClientService {
     @Override
     public String createNewClient(ClientForm clientForm) {
         //track insert results
-        int result=0;
-
-        //TODO check for duplicates and form validation
+       int result=0;
 
         //set birthday from string to date
         clientForm.birthdayStrToBirthdayDate();
@@ -56,8 +58,6 @@ public class ClientServiceImpl implements ClientService {
         //set initial credits
         clientForm.setCredit(5);
 
-        //TODO add hash to the password
-
         result=clientDao.createClient(clientForm);
 
         if(result>0){
@@ -65,6 +65,7 @@ public class ClientServiceImpl implements ClientService {
         }else {
             return ReturnUtil.resultFail("Database insertion failure");
         }
+
     }
 
     @Override

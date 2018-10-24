@@ -1,5 +1,6 @@
 package com.saneza.api.dao;
 
+import com.saneza.api.helper.OrderProductUpdate;
 import com.saneza.api.model.FormFilters.OrdersFilter;
 import com.saneza.api.model.FormFilters.OrdersForm;
 import com.saneza.api.model.Orders;
@@ -20,5 +21,8 @@ public interface OrdersDao
     //for counting all
     public int countAll(OrdersFilter ordersFilter);
     //for inserting an order
-    public void insertOrders(OrdersForm ordersForm);
+    public int insertOrders(OrdersForm ordersForm);
+//for upadating the response time
+    public int updateResponseTime(OrderProductUpdate orderProductUpdate);
+
 }

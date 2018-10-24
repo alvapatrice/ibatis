@@ -1,5 +1,6 @@
 package com.saneza.api.service;
 
+import com.saneza.api.helper.ProductHelper;
 import com.saneza.api.model.FormFilters.ProductFilter;
 import com.saneza.api.model.FormFilters.ProductForm;
 import com.saneza.api.model.Product;
@@ -21,4 +22,6 @@ public interface ProductService
     public int countAll(ProductFilter productFilter);
     //for creating product
     public void createProduct(ProductForm productForm);
+
+    public List<ProductHelper> getDetaills(ProductFilter productFilter);
 }

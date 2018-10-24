@@ -13,6 +13,16 @@ public class ServiceFilter extends SearchForm
 
     private Integer categoryId;
 
+    private Integer branchId;
+
+    public Integer getBranchId() {
+        return branchId;
+    }
+
+    public void setBranchId(Integer branchId) {
+        this.branchId = branchId;
+    }
+
     public Integer getServiceId() {
         return serviceId;
     }

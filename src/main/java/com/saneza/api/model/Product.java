@@ -1,9 +1,8 @@
 package com.saneza.api.model;
 
 /**
- * Created by Nostalgie Patrice
- * on 10/14/2018
- * Make it work, make it right, make it fast.
+ * Created by gatete rugamba
+ * on 10/18/2018
  */
 public class Product {
 
@@ -11,13 +10,14 @@ public class Product {
     private Integer productId;
 
     //product shop id
-    private Integer shopId;
+    private Integer branchId;
 
     //product name
     private String productName;
 
     //product category
     private Integer category;
+
 
     //product brand
     private Integer brand;
@@ -27,15 +27,28 @@ public class Product {
 
     //product special price
     private Double specialPrice;
-
+//the specifiation
+    private String 	specification;
+    //the number of bottles in it
+    private Integer quantity;
     //	product price
-    private Double price;
+    private Double unitPrice;
 
     //available stock
     private Integer stock;
 
     //product status 1-available, 0-blocked, -99 deleted
     private Integer status;
+
+    private Integer supplier;
+
+    public Integer getSupplier() {
+        return supplier;
+    }
+
+    public void setSupplier(Integer supplier) {
+        this.supplier = supplier;
+    }
 
     public Integer getProductId() {
         return productId;
@@ -45,12 +58,28 @@ public class Product {
         this.productId = productId;
     }
 
-    public Integer getShopId() {
-        return shopId;
+    public Integer getBranchId() {
+        return branchId;
     }
 
-    public void setShopId(Integer shopId) {
-        this.shopId = shopId;
+    public void setBranchId(Integer branchId) {
+        this.branchId = branchId;
+    }
+
+    public String getSpecification() {
+        return specification;
+    }
+
+    public void setSpecification(String specification) {
+        this.specification = specification;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 
     public String getProductName() {
@@ -93,12 +122,12 @@ public class Product {
         this.specialPrice = specialPrice;
     }
 
-    public Double getPrice() {
-        return price;
+    public Double getUnitPrice() {
+        return unitPrice;
     }
 
-    public void setPrice(Double price) {
-        this.price = price;
+    public void setUnitPrice(Double unitPrice) {
+        this.unitPrice = unitPrice;
     }
 
     public Integer getStock() {

@@ -40,9 +40,11 @@
 
 
     <insert id="insertOrders" parameterType="map">
-       INSERT INTO oders(id,client_id,product_id,branch_id,DATE,TiME)
+       INSERT INTO oders(id,client_id,product_id,quantity,total, branch_id,date,time)
          VALUES
-        (#{orderId},#{clientId},productId,branchId,#{date},#{time})
+        (#{orderId},#{clientId},#{productId},#{quantity},#{total},#{branchId},#{date},#{time})
     </insert>
-
+    <update id="updateResponseTime" parameterType="com.saneza.api.helper.OrderProductUpdate">
+          update oders set time=#{updateTime} where id=#{orderId};
+    </update>
 </mapper>

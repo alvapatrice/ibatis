@@ -55,5 +55,16 @@ public class ShopBranchController
 
         return "done";
     }
+    @PostMapping("/them.bs")
+    public String getThem(ShopBranchFilter shopBranchFilter){
+
+        Map<String,Object> resultMap=new HashMap<>();
+        List<ShopBranch> branches=shopBranchService.getThem(shopBranchFilter);
+        resultMap.put("data",branches);
+        resultMap.put("totalaccount",shopBranchService.count(shopBranchFilter));
+        resultMap.put("page",shopBranchFilter.getPage());
+
+        return ReturnUtil.resultSuccess(resultMap);
+    }
 
 }

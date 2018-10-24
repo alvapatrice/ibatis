@@ -1,6 +1,12 @@
 package com.saneza.api.service.impl;
+/**
+ * @gatete rugamba
+ * kuwa 19/10/2018
+ */
 
+import com.saneza.api.common.utils.ReturnUtil;
 import com.saneza.api.dao.ServiceDao;
+import com.saneza.api.helper.ServiceHelper;
 import com.saneza.api.model.FormFilters.ServiceFilter;
 import com.saneza.api.model.FormFilters.ServiceForm;
 import com.saneza.api.service.ServiceService;
@@ -34,12 +40,25 @@ public class ServiceServiceImpl implements ServiceService{
     }
 
     @Override
-    public void createService(ServiceForm serviceForm) {
-        serviceDao.createService(serviceForm);
+    public String createService(ServiceForm serviceForm) {
+        int result=0;
+
+        result=serviceDao.createService(serviceForm);
+        if(result>0){
+            return ReturnUtil.resultSuccess();
+        }
+        else{
+            return ReturnUtil.resultSuccess("failed to insert");
+        }
     }
 
     @Override
     public void deleteService(ServiceFilter serviceFilter) {
         serviceDao.deleteService(serviceFilter);
+    }
+
+    @Override
+    public List<ServiceHelper> getSomeServices(ServiceFilter serviceFilter) {
+        return serviceDao.getIt(serviceFilter.getBranchId());
     }
 }

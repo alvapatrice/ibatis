@@ -21,8 +21,6 @@ public class ShopBranch {
     //shop street name
     private String streetName;
 
-    //branch name
-    private String branchName;
 
     //location latitude
     private Double latitude;
@@ -80,13 +78,6 @@ public class ShopBranch {
         this.streetName = streetName;
     }
 
-    public String getBranchName() {
-        return branchName;
-    }
-
-    public void setBranchName(String branchName) {
-        this.branchName = branchName;
-    }
 
     public Double getLatitude() {
         return latitude;

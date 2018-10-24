@@ -1,6 +1,7 @@
 package com.saneza.api.service.impl;
 
 import com.saneza.api.dao.ProductDao;
+import com.saneza.api.helper.ProductHelper;
 import com.saneza.api.model.FormFilters.ProductFilter;
 import com.saneza.api.model.FormFilters.ProductForm;
 import com.saneza.api.model.Product;
@@ -36,6 +37,11 @@ public class ProductServiceImpl implements ProductService
     @Override
     public void createProduct(ProductForm productForm) {
         pdao.createProduct(productForm);
+    }
+
+    @Override
+    public List<ProductHelper> getDetaills(ProductFilter productFilter) {
+        return pdao.getDetails(productFilter.getBranchId());
     }
 
 }

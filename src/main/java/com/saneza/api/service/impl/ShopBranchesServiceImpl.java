@@ -25,6 +25,12 @@ public class ShopBranchesServiceImpl implements ShopBranchService {
     }
 
     @Override
+    public List<ShopBranch> getThem(ShopBranchFilter shopBranchFilter) {
+
+        return shopBranchDao.getThem(shopBranchFilter.getLocationName());
+    }
+
+    @Override
     public ShopBranch getBranch(ShopBranchFilter shopBranchFilter) {
         return shopBranchDao.getShop(shopBranchFilter);
     }
@@ -44,4 +50,5 @@ public class ShopBranchesServiceImpl implements ShopBranchService {
 
         shopBranchDao.deleteShopBranch(shopBranchFilter);
     }
+
 }

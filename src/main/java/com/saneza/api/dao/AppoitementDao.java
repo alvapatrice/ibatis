@@ -21,5 +21,9 @@ public interface AppoitementDao
     //for counting all
     public int countAll(AppoitementFilter appoitementFilter);
     //for inserting appoitement
-    public void insertAppoitement(AppoitementForm appoitementForm);
+    public int insertAppoitement(AppoitementForm appoitementForm);
+//for updating the service wanted
+    public int updateService(AppoitementForm appoitementForm);
+//for set it to delete mode
+    public int updateStatus(AppoitementForm appoitementForm);
 }

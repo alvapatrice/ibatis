@@ -21,8 +21,8 @@
         <if test="productName!=null">
             AND PRODUCT_NAME=#{productName}
         </if>
-        <if test="shopId!=null">
-            AND SHOP_ID=#{shopId}
+        <if test="branchId!=null">
+            AND branch_ID=#{branchId}
         </if>
         <if test="category!=null">
             AND CATEGORY=#{category}
@@ -57,11 +57,24 @@
     </select>
 
     <insert id="createProduct" parameterType="map">
-        INSERT INTO PRODUCTs
-        (product_id,shop_id,product_name,category,brand,image,price,special_price,stock,status)
+      INSERT INTO products
+      (product_id,branch_id,product_name,specification,quantity,category,
+      supplier,brand,image,Unit_price,special_price,stock,status)
         VALUES
-        (#{productId},#{shopId},#{productName},#{category},#{brand},#{image},#{price},#{specialPrice},#{stock},#{status})
+        (#{productId},#{branchId},#{productName},#{specification},#{quantity},#{category},#{supplier}
+        ,#{brand},
+        #{image},#{unitPrice},#{specialPrice},#{stock},#{status})
     </insert>
+
+    <select id="getDetails" parameterType="java.lang.Integer" resultType="com.saneza.api.helper.ProductHelper">
+        SELECT product_name,specification,quantity,unit_price from
+         products,shop_branches
+       where products.branch_id = shop_branches.branch_id and shop_branches.branch_id=#{branchId}
+    </select>
+    
+    <update id="updateQuantityFromOrders" parameterType="com.saneza.api.helper.OrderProductUpdate">
+        UPDATE products set quantity=quantity - #{orderQuantity} where product_id=#{productId}
+    </update>
 
 
 </mapper>

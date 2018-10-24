@@ -34,7 +34,7 @@
             AND CREATE_TIME &gt;=#{startTime}
         </if>
         <if test="endTime!=null">
-            AND CREATE_TIME &lt;=#{startTime}
+            AND  CREATE_TIME &lt;=#{endTime}
         </if>
         <if test="searchTerm!=null">
             <bind name="pattern" value="'%'+searchTerm+'%'"/>
@@ -58,7 +58,7 @@
         SELECT  * FROM  CLIENTS WHERE 1=1
         <include refid="client_filter"/>
     </select>
-    <insert id="createClient" parameterType="map">
+    <insert id="createClient" parameterType="map" >
         INSERT  INTO CLIENTS
         (LOCATION_ID,STREET_NAME,PHONE_NUMBER,USERNAME,FIRST_NAME,LAST_NAME,BIRTHDAY,SEX,PASSWORD,EMAIL,
         PROFILE_IMAGE,CREDIT,CREATE_TIME,UPDATE_TIME)

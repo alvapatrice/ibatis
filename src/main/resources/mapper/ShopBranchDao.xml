@@ -21,15 +21,14 @@
         <if test="locationId!=null">
             AND LOCATION_ID=#{locationId}
         </if>
-        <if test="branchName!=null">
-            AND BRANCH_NAME=#{branchName}
-        </if>
+
         <if test="latitude!=null">
             AND LATITUDE=#{latitude}
         </if>
         <if test="longitude!=null">
             AND LONGITUDE=#{longitude}
         </if>
+
     </sql>
 
 
@@ -48,12 +47,17 @@
         <include refid="shops_filter"/>
     </select>
     <select id="createShopBranch" parameterType="map">
-        INSERT INTO shop_branches(branch_id,branch_name,location_id,street_name,shop_id,latitude,longitude,open_from,close_at,open_days,status,create_time,update_time)
+        INSERT INTO shop_branches(branch_id,location_id,street_name,shop_id,latitude,longitude,open_from,close_at,open_days,status,create_time,update_time)
          VALUES
-         (#{branchId},#{branchName},#{locationId},#{streetName},#{shopId},#{latitude},#{longtude},#{openFrom},#{closeAt},#{openDays},#{status},#{createTime},#{updateTime})
+         (#{branchId},#{locationId},#{streetName},#{shopId},#{latitude},#{longtude},#{openFrom},#{closeAt},#{openDays},#{status},#{createTime},#{updateTime})
     </select>
     <select id="deleteShopBranch" parameterType="map">
          DELETE FROM shop_branches WHERE 1=1
         <include refid="shops_filter"/>
+</select>
+    <select id="getThem" parameterType="java.lang.String" resultType="com.saneza.api.model.ShopBranch">
+        SELECT * FROM shop_branches WHERE location_id=
+        (select locations.location_id from locations where sector=#{locationName})
+
     </select>
 </mapper>

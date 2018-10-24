@@ -1,5 +1,6 @@
 package com.saneza.api.service.impl;
 
+import com.saneza.api.common.utils.ReturnUtil;
 import com.saneza.api.dao.AppoitementDao;
 import com.saneza.api.model.Appoitement;
 import com.saneza.api.model.FormFilters.AppoitementFilter;
@@ -38,7 +39,42 @@ public class AppoitementServiceImpl implements AppoitementService
     }
 
     @Override
-    public void insertAppoitement(AppoitementForm appoitementForm) {
-    appoitementDao.insertAppoitement(appoitementForm);
+    public String insertAppoitement(AppoitementForm appoitementForm) {
+
+        int result=0;
+       result=appoitementDao.insertAppoitement(appoitementForm);
+
+
+        if(result>0){
+            return ReturnUtil.resultSuccess();
+        }
+        else {
+            return ReturnUtil.resultSuccess("fail to save it");
+        }
+    }
+
+    @Override
+    public String updateService(AppoitementForm appoitementForm) {
+        int result=0;
+        result=appoitementDao.updateService(appoitementForm);
+
+        if(result>0){
+            return ReturnUtil.resultSuccess();
+        }
+        else {
+            return ReturnUtil.resultSuccess("fail to save it");
+        }
+    }
+
+    @Override
+    public String updateStatus(AppoitementForm appoitementForm) {
+        int result=0;
+        result=appoitementDao.updateStatus(appoitementForm);
+        if(result>0){
+            return ReturnUtil.resultSuccess();
+        }
+        else {
+            return ReturnUtil.resultSuccess("fail to save it");
+        }
     }
 }

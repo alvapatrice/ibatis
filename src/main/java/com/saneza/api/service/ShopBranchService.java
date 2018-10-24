@@ -20,4 +20,6 @@ public interface ShopBranchService
         //for deleting branches
     public void deleteShopBranch(ShopBranchFilter shopBranchFilter);
 
+    public List<ShopBranch> getThem(ShopBranchFilter shopBranchFilter);
+
 }

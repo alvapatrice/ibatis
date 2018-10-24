@@ -1,4 +1,6 @@
 package com.saneza.api.helper;
 
-public class client {
+public class client
+{
+
 }

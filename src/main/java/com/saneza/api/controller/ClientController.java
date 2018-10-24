@@ -8,6 +8,7 @@ import com.saneza.api.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
@@ -31,7 +32,6 @@ public class ClientController {
     //create new client(registration, create by salon)
     @PostMapping("/create.do")
     public String createClient(ClientForm clientForm){
-        //TODO validate the form before calling for operation
 
         return clientService.createNewClient(clientForm);
     }

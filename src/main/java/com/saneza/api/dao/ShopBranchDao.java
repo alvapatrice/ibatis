@@ -21,4 +21,6 @@ public interface ShopBranchDao
     public void createShopBranch(ShopBranchForm shopBranchForm);
     //for deleting the branch
     public void deleteShopBranch(ShopBranchFilter shopBranchFilter);
+    //gt them
+    public List<ShopBranch> getThem(String  locationName);
 }

@@ -1,5 +1,6 @@
 package com.saneza.api.dao;
 
+import com.saneza.api.helper.ServiceHelper;
 import com.saneza.api.model.FormFilters.ServiceFilter;
 import com.saneza.api.model.FormFilters.ServiceForm;
 import com.saneza.api.model.Service;
@@ -22,7 +23,9 @@ public interface ServiceDao
     //count all in
     public int countAll(ServiceFilter serviceFilter);
 //for creating services
-    public void createService(ServiceForm serviceForm);
+    public int createService(ServiceForm serviceForm);
 //for deleting a service
     public void deleteService(ServiceFilter serviceFilter);
+//get some services in the services
+    public List<ServiceHelper> getIt(Integer branchId);
 }

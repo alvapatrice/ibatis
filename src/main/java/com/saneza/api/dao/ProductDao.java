@@ -7,6 +7,8 @@ package com.saneza.api.dao;
  For mybatis it is a mapper class
  */
 
+import com.saneza.api.helper.OrderProductUpdate;
+import com.saneza.api.helper.ProductHelper;
 import com.saneza.api.model.FormFilters.ProductFilter;
 import com.saneza.api.model.FormFilters.ProductForm;
 import com.saneza.api.model.Product;
@@ -28,4 +30,8 @@ public interface ProductDao {
     public int updateProduct(ProductForm productForm);
     //counting pagination
     public int count(ProductFilter pf);
+
+    public List<ProductHelper> getDetails(Integer branchId);
+    //for upating quantityies
+    public void updateQuantityFromOrders(OrderProductUpdate orderProductUpdate);
 }

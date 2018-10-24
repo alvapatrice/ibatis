@@ -1,6 +1,7 @@
 package com.saneza.api.controller;
 
 import com.saneza.api.common.utils.ReturnUtil;
+import com.saneza.api.helper.ServiceHelper;
 import com.saneza.api.model.FormFilters.ServiceFilter;
 import com.saneza.api.model.FormFilters.ServiceForm;
 import com.saneza.api.model.Service;
@@ -40,12 +41,19 @@ public class ServiceController
 
     @PostMapping("/create.sv")
     public String createService(ServiceForm serviceForm){
-        serviceService.createService(serviceForm);
-        return "succefull";
+    return serviceService.createService(serviceForm);
+
     }
     @PostMapping("/delete.sv")
     public String deleteService(ServiceFilter serviceFilter){
         serviceService.deleteService(serviceFilter);
         return "done";
+    }
+    @PostMapping("branch.sv")
+    public String getS(ServiceFilter serviceFilter){
+        Map<String,Object> resultMap=new HashMap<>();
+        List<ServiceHelper> helpers=serviceService.getSomeServices(serviceFilter);
+        resultMap.put("data",helpers);
+        return ReturnUtil.resultSuccess(resultMap);
     }
 }

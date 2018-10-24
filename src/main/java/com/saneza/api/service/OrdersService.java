@@ -1,5 +1,6 @@
 package com.saneza.api.service;
 
+import com.saneza.api.helper.OrderProductUpdate;
 import com.saneza.api.model.FormFilters.OrdersFilter;
 import com.saneza.api.model.FormFilters.OrdersForm;
 import com.saneza.api.model.Orders;
@@ -18,5 +19,7 @@ public interface OrdersService {
     //count all
     public int countAll(OrdersFilter ordersFilter);
     //insert new order
-    public void insertOrder(OrdersForm ordersForm);
+    public String insertOrder(OrdersForm ordersForm);
+    //it means if we update dleivered time it is accepted
+    public String updateDelivelerdTime(OrdersForm ordersForm);
 }

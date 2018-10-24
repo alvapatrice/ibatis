@@ -10,7 +10,7 @@ public class ProductFilter extends SearchForm {
     private String productName;
 
     //product shop id
-    private Integer shopId;
+    private Integer branchId;
 
     //product category
     private Integer category;
@@ -30,12 +30,12 @@ public class ProductFilter extends SearchForm {
         this.stock = stock;
     }
 
-    public Integer getShopId() {
-        return shopId;
+    public Integer getBranchId() {
+        return branchId;
     }
 
-    public void setShopId(Integer shopId) {
-        this.shopId = shopId;
+    public void setBranchId(Integer branchId) {
+        this.branchId = branchId;
     }
 
     public Integer getCategory() {
