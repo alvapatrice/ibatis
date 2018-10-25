@@ -18,5 +18,5 @@ public interface EmployeeService
     //count all
     public int countAll(EmployeeFilter employeeFilter);
 
-    public void createEmployee(EmployeeForm employeeForm);
+    public String createEmployee(EmployeeForm employeeForm);
 }

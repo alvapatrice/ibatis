@@ -44,7 +44,6 @@ public class EmployeeController
     }
     @PostMapping("/create.ey")
     public String createEmployee(EmployeeForm employeeForm){
-        employeeService.createEmployee(employeeForm);
-        return "done";
+        return employeeService.createEmployee(employeeForm);
     }
 }

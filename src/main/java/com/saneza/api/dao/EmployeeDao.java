@@ -22,7 +22,7 @@ public interface EmployeeDao
     //for counting
     public int countAll(EmployeeFilter employeeFilter);
     //inserting new employee
-    public void createEmployee(EmployeeForm employeeForm);
+    public int createEmployee(EmployeeForm employeeForm);
     //for deleting the employee
     //public void deleteEmployee(EmployeeFilter employeeFilter);
 }

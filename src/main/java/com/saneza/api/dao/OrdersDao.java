@@ -24,5 +24,7 @@ public interface OrdersDao
     public int insertOrders(OrdersForm ordersForm);
 //for upadating the response time
     public int updateResponseTime(OrderProductUpdate orderProductUpdate);
+    //change the quantity and the product on the order
+    public int updateProducts(OrderProductUpdate orderProductUpdate);
 
 }

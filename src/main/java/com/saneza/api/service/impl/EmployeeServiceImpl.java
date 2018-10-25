@@ -1,10 +1,12 @@
 package com.saneza.api.service.impl;
 
+import com.saneza.api.common.utils.ReturnUtil;
 import com.saneza.api.dao.EmployeeDao;
 import com.saneza.api.model.Employee;
 import com.saneza.api.model.FormFilters.EmployeeFilter;
 import com.saneza.api.model.FormFilters.EmployeeForm;
 import com.saneza.api.service.EmployeeService;
+import com.sun.org.apache.bcel.internal.generic.RETURN;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,8 +39,15 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public void createEmployee(EmployeeForm employeeForm) {
+    public String createEmployee(EmployeeForm employeeForm) {
+        int result=0;
+        employeeForm.birthdayStrToBirthdayDate();
+        result=employeeDao.createEmployee(employeeForm);
 
-        employeeDao.createEmployee(employeeForm);
+        if(result>0){
+            return ReturnUtil.resultSuccess();
+        }else {
+            return ReturnUtil.resultFail("Database insertion failure");
+        }
     }
 }

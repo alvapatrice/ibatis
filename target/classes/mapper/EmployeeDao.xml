@@ -51,9 +51,8 @@
         <include refid="employee_filter"/>
     </select>
     <insert id="createEmployee" parameterType="map">
-
-        INSERT INTO employees(employee_id,location_id,street_name,phone_number,username,first_name,last_name,
-         birthday,sex,password,email,profile_image,credit,create_time,update_time)
+        INSERT INTO employees(employee_id,location_id,street_name,phone_number,
+         username,first_name,last_name,birthday,sex,password,email,profile_image,credit,create_time,update_time)
         VALUES
         (#{employeeId},#{locationId},#{streetName},#{phoneNumber},#{userName},#{firstName},
         #{lastName},#{birthDay},#{sex},#{password},#{email},#{profileImage},#{credit},#{createTime},#{updateTime})

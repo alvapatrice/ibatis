@@ -47,4 +47,7 @@
     <update id="updateResponseTime" parameterType="com.saneza.api.helper.OrderProductUpdate">
           update oders set time=#{updateTime} where id=#{orderId};
     </update>
+    <update id="updateProducts" parameterType="com.saneza.api.helper.OrderProductUpdate">
+        UPDATE oders SET quantity=#{quantity},product_id=#{productId} WHERE id=#{orderId}
+    </update>
 </mapper>

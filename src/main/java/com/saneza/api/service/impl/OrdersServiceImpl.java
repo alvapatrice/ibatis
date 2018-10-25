@@ -98,4 +98,23 @@ public class OrdersServiceImpl implements OrdersService {
         }
 
     }
+
+    @Override
+    public String updateOrder(OrdersForm ordersForm) {
+
+        orderProductUpdate=new OrderProductUpdate();
+        int result=0;
+    orderProductUpdate.setOrderId(ordersForm.getOrderId());
+    orderProductUpdate.setProductId(ordersForm.getProductId());
+    orderProductUpdate.setQuantity(ordersForm.getQuantity());
+
+    result=ordersDao.updateProducts(orderProductUpdate);
+
+        if(result>0){
+            return ReturnUtil.resultSuccess();
+        }
+        else {
+            return ReturnUtil.resultSuccess("fail to save it");
+        }
+    }
 }

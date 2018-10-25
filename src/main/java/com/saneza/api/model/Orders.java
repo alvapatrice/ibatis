@@ -3,28 +3,26 @@ package com.saneza.api.model;
 import java.util.Date;
 
 /**
- * Created by gatete rugamba
- * on 10/18/2018
- *
+ * @gatete rugamba
+ * kuwa 19/10/2018
  */
 public class Orders
 {
-//the id
+    //the id
     private Integer orderId;
-//the client that is making the order
+    //the client that is making the order
     private Integer clientId;
-//the product that is being commanded
+    //the product that is being commanded
     private Integer productId;
-//	the branch that will deriver the product
+    //	the branch that will deriver the product
     private Integer branchId;
-//the total price of that orderp'
-    private Integer total;
-//the numbers of those products
+
     private Integer quantity;
 
-//when the order was made
+    private Integer total;
+
     private Date date;
-//when it is derivered
+
     private Date time;
 
     public Integer getOrderId() {
@@ -59,6 +57,22 @@ public class Orders
         this.branchId = branchId;
     }
 
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+
+    public Integer getTotal() {
+        return total;
+    }
+
+    public void setTotal(Integer total) {
+        this.total = total;
+    }
+
     public Date getDate() {
         return date;
     }
@@ -73,21 +87,5 @@ public class Orders
 
     public void setTime(Date time) {
         this.time = time;
-    }
-
-    public Integer getTotal() {
-        return total;
-    }
-
-    public void setTotal(Integer total) {
-        this.total = total;
-    }
-
-    public Integer getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
     }
 }

@@ -18,6 +18,16 @@ public class OrderProductUpdate
 //when it is derivered they update that  time
     private Date updateTime;
 
+    private Integer quantity;
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+
     public Integer getOrderId() {
         return orderId;
     }

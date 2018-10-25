@@ -22,4 +22,6 @@ public interface OrdersService {
     public String insertOrder(OrdersForm ordersForm);
     //it means if we update dleivered time it is accepted
     public String updateDelivelerdTime(OrdersForm ordersForm);
+    //for updating products and quantity in the order
+    public String updateOrder(OrdersForm ordersForm);
 }

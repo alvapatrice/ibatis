@@ -56,4 +56,10 @@ public class OrdersController {
     public String acceptOrder(OrdersForm ordersForm){
         return ordersService.updateDelivelerdTime(ordersForm);
     }
+
+    @PostMapping("update.od")
+    public String updateOrder(OrdersForm ordersForm){
+        return ordersService.updateOrder(ordersForm);
+    }
+
 }
